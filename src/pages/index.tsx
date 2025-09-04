@@ -8,20 +8,19 @@ import Card from "../assets/images/1.png";
 import Cardverso from "../assets/images/2.png";
 
 import { useState } from "react";
-import ThemeToggle from "../components/ui/theme-Toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
-import { CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { CardContent } from "../components/ui/card";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../layout/Navigation";
 import { Button } from "../components/ui/button";
+import Footer from "../layout/Footer";
 
 
 
 export default function Index() {
   const navigate = useNavigate()
   const [flipped, setFlipped] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
 
 
@@ -269,37 +268,6 @@ export default function Index() {
                   backgroundPosition: "center",
                 }}
               ></div>
-
-              {/* <img
-              src="https://source.unsplash.com"
-              alt="hero illustration"
-              width={600}
-              height={600}
-              className=" absolute inset-4  rounded-xl shadow-lg"
-
-            /> */}
-              {/* <div className="absolute inset-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-100 shadow-sm p-6 flex flex-col">
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <div className="flex-1 h-4 rounded bg-gray-100"></div>
-                </div>
-
-                <div className="mt-6 grid grid-cols-3 gap-4">
-                  <div className="col-span-2 h-8 rounded-lg bg-primary-dark/5"></div>
-                  <div className="h-8 rounded-lg bg-primary-dark/10"></div>
-                  <div className="h-32 rounded-lg bg-gradient-to-br from-primary-light/20 to-primary-dark/20"></div>
-                  <div className="h-32 rounded-lg bg-gray-100"></div>
-                  <div className="h-32 rounded-lg bg-gradient-to-br from-secondary-light/20 to-secondary-dark/20"></div>
-                </div>
-
-                <div className="mt-6 flex-1 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 p-4">
-                  <div className="h-4 w-1/2 rounded bg-gray-200 mb-3"></div>
-                  <div className="h-3 w-3/4 rounded bg-gray-200/80 mb-2"></div>
-                  <div className="h-3 w-2/3 rounded bg-gray-200/80"></div>
-                </div>
-              </div> */}
             </div>
 
             <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-2xl bg-primary/10 backdrop-blur-sm border border-secondary-light/20 shadow-lg"></div>
@@ -505,68 +473,7 @@ export default function Index() {
           </div>
         </div>
       </section>
-
-      <footer className="bg-muted/50 border-t border-border mt-0">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-            {/* Brand Section */}
-            <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold text-gray-900">Konect</h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">
-                Konect vous aide à créer, partager et gérer vos cartes de visite numériques
-                pour développer vos opportunités professionnelles.
-              </p>
-              <div className="flex mt-6 space-x-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className="p-2 bg-card rounded-full shadow hover:bg-primary hover:text-white transition"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="h-5 w-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Footer Links */}
-            {footerSections.map((section, index) => (
-              <div key={index}>
-                <h3 className="font-semibold text-muted-foreground mb-4">{section.title}</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {section.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <a
-                        href={link.href}
-                        className="hover:text-foreground transition"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Section */}
-          <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-4">
-              <p className="text-sm text-gray-500">
-                © {new Date().getFullYear()} Konect. Tous droits réservés.
-              </p>
-              <ThemeToggle />
-            </div>
-            <button className="bg-black text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition">
-              Créer ma carte
-            </button>
-          </div>
-        </div>
-      </footer>
-
-
-
+      <Footer />
     </div>
   );
 }

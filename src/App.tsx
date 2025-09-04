@@ -13,6 +13,7 @@ import Profile from "./pages/dashboard/Profile";
 import CardInfos from "./pages/dashboard/card-info";
 import HomeDash from "./pages/dashboard/card-detail";
 import Analytics from "./pages/dashboard/Home";
+import SupportPage from "./pages/supportPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/support" element={<SupportPage />} />
         {/* dashboard outlet module type  */}
         <Route path="/dashboard" element={<Dashboard />}>
           {/* Outlet s’affiche ici */}
