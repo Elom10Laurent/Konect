@@ -1,9 +1,9 @@
-import gptPic from "../assets/images/top.png";
+// import gptPic from "../assets/imgs/top.png";
 
-import { Github, Linkedin, Mail, Twitter, CheckCircle, ArrowUpRight,  } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, CheckCircle, ArrowUpRight, } from "lucide-react";
 
 import exo from "../assets/images/exemple.png";
-import ProfileCard from "../assets/images/profile.png";
+import ProfileCard from "../assets/profile.png";
 import Card from "../assets/images/1.png";
 import Cardverso from "../assets/images/2.png";
 
@@ -13,73 +13,77 @@ import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Navigation from "../layout/Navigation";
+import { Button } from "../components/ui/button";
 
 
 
 export default function Index() {
-const navigate = useNavigate()
+  const navigate = useNavigate()
   const [flipped, setFlipped] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
 
-const testimonials = [
-  {
-    name: "Sarah M.",
-    role: "Entrepreneure",
-    content:
-      "Konect m’a permis de transformer mes rencontres en vraies opportunités. Simple, efficace et élégant.",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-  },
-  {
-    name: "David K.",
-    role: "Consultant",
-    content:
-      "Je partage ma carte digitale en un clic avec un QR code. Mes clients adorent la rapidité et le côté innovant.",
-    avatar: "https://randomuser.me/api/portraits/men/12.jpg",
-  },
-  {
-    name: "Aïcha B.",
-    role: "Designer",
-    content:
-      "L’expérience utilisateur est incroyable. Je garde le contact facilement grâce à la messagerie intégrée.",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-  {
-    name: "Jean P.",
-    role: "Commercial",
-    content:
-      "Grâce à la carte NFC, mes échanges sont instantanés. Plus besoin de papier, tout est directement sur le smartphone de mon interlocuteur.",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-  },
-];
+
+  const testimonials = [
+    {
+      name: "Sarah M.",
+      role: "Entrepreneure",
+      content:
+        "Konect m’a permis de transformer mes rencontres en vraies opportunités. Simple, efficace et élégant.",
+      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    },
+    {
+      name: "David K.",
+      role: "Consultant",
+      content:
+        "Je partage ma carte digitale en un clic avec un QR code. Mes clients adorent la rapidité et le côté innovant.",
+      avatar: "https://randomuser.me/api/portraits/men/12.jpg",
+    },
+    {
+      name: "Aïcha B.",
+      role: "Designer",
+      content:
+        "L’expérience utilisateur est incroyable. Je garde le contact facilement grâce à la messagerie intégrée.",
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    },
+    {
+      name: "Jean P.",
+      role: "Commercial",
+      content:
+        "Grâce à la carte NFC, mes échanges sont instantanés. Plus besoin de papier, tout est directement sur le smartphone de mon interlocuteur.",
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    },
+  ];
 
 
- const tools = [
-  {
-    title: "Carte digitale",
-    desc: "Créez une carte de visite numérique professionnelle, partagez-la via QR code, carte NFC et personnalisez-la avec vos liens.",
-    icon: "💳",
-  },
-  {
-    title: "Réseau & Messagerie",
-    desc: "Ajoutez vos contacts, échangez directement avec eux et développez votre réseau en toute simplicité.",
-    icon: "🤝",
-  },
-  {
-    title: "Smart Links",
-    desc: "Centralisez tous vos liens (portfolio, réseaux sociaux, CV) en un seul endroit accessible.",
-    icon: "🔗",
-  },
-  {
-    title: "Analytics",
-    desc: "Suivez les vues, clics et interactions.",
-    icon: "📊",
-  },
-  {
-    title: "Partage intelligent",
-    desc: "Diffusez vos informations via QR code, email ou réseaux sociaux en un clic.",
-    icon: "📤",
-  },
-];
+  const tools = [
+    {
+      title: "Carte digitale",
+      desc: "Créez une carte de visite numérique professionnelle, partagez-la via QR code, carte NFC et personnalisez-la avec vos liens.",
+      icon: "💳",
+    },
+    {
+      title: "Réseau & Messagerie",
+      desc: "Ajoutez vos contacts, échangez directement avec eux et développez votre réseau en toute simplicité.",
+      icon: "🤝",
+    },
+    {
+      title: "Smart Links",
+      desc: "Centralisez tous vos liens (portfolio, réseaux sociaux, CV) en un seul endroit accessible.",
+      icon: "🔗",
+    },
+    {
+      title: "Analytics",
+      desc: "Suivez les vues, clics et interactions.",
+      icon: "📊",
+    },
+    {
+      title: "Partage intelligent",
+      desc: "Diffusez vos informations via QR code, email ou réseaux sociaux en un clic.",
+      icon: "📤",
+    },
+  ];
 
   const footerSections = [
     {
@@ -95,6 +99,8 @@ const testimonials = [
         { label: "À propos", href: "#about" },
         { label: "Blog", href: "#blog" },
         { label: "Contact", href: "#contact" },
+        { label: "Carrières", href: "#careers" },
+
       ],
     },
     {
@@ -117,29 +123,19 @@ const testimonials = [
   const socialLinks = [
     { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Github, href: "#", label: "GitHub" },
+    // { icon: Github, href: "#", label: "GitHub" },
     { icon: Mail, href: "mailto:contact@konect.com", label: "Email" },
   ];
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Navbar */}
-      <header className="max-w-6xl mx-auto flex items-center justify-between px-6 py-6">
-        <div className="text-2xl font-black tracking-tight">Konect</div>
-        <nav className="hidden md:flex items-center gap-8 text-sm text-gray-700">
-          <a href="#" className="hover:text-black">Accueil</a>
-          <a href="#features" className="hover:text-black">Fonctionnalités</a>
-          <a href="#work" className="hover:text-black">Nos Réalisations</a>
-          <a href="#blog" className="hover:text-black">Blog</a>
-                  <button onClick={() => navigate("/dashboard")} className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium">Dashboard</button>
+      <Navigation />
 
-        </nav>
-        <button className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium">Discutons</button>
-      </header>
+
       {/* Hero */}
-      <section >
+      {/* <section className="mt-10" >
         <div className="flex flex-col md:flex-row items-center max-w-7xl mx-auto px-6 py-12 gap-12 h-full">
-          {/* Texte */}
           <div className="flex-1">
             <h1 className="text-3xl md:text-6xl font-extrabold leading-tight tracking-tight">
               Simplifiez vos
@@ -158,12 +154,11 @@ const testimonials = [
               </button>
               <button className="flex bg-white text-primary  hover:text-white hover:bg-primary  px-6 py-3 rounded-full text-sm font-semibold shadow hover:bg-gray-900 transition">
                 Créer ma carte
-                <ArrowUpRight />
+                <ArrowUpRight className="ml-2" />
               </button>
             </div>
           </div>
 
-          {/* Image */}
           <div className="flex-1">
             <img
               className="w-auto h-full object-cover rounded-lg shadow-lg"
@@ -177,6 +172,140 @@ const testimonials = [
           Rejoins +10 000 professionnels et développe ton réseau dès aujourd'hui !
         </p>
 
+      </section> */}
+
+
+
+      <section className="relative overflow-hidden bg-gradient-to-br from-background via-secondary to-muted py-20">
+        <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Texte gauche */}
+          <div className="space-y-10 animate-fade-in-up">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-light/20 border border-primary text-primary-dark font-medium">
+              <span className="relative flex h-3 w-3 mr-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+              </span>
+              <span>Nous Recrutons !</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl   lg:text-5xl font-extrabold leading-tight tracking-tight">
+              Simplifiez vos
+              <span className="block">rencontres professionnelles</span>
+              <span className="block mt-1">
+                et  <span className="text-primary">développez votre réseau</span>
+              </span>
+            </h1>
+
+            <p className="text-lg text-muted-foreground max-w-lg">
+              Créez votre carte de visite digitale, partagez vos informations et découvrez de nouveaux contacts.
+              Transformez chaque rencontre en opportunité professionnelle, simplement et efficacement.
+            </p>
+
+
+            <div className="md:flex space-y-4 md:space-y-0 gap-4">
+              <Button onClick={() => [navigate('login')]} size="lg" className="hero-button">Créez votre carte</Button>
+              <Button size="lg" variant="ghost" className="hero-button-outline">Voir une démo</Button>
+            </div>
+
+            {/* Preuve sociale */}
+            <div className="flex items-center gap-4 pt-4">
+              <div className="flex -space-x-3">
+                <img
+                  src="https://randomuser.me/api/portraits/women/12.jpg"
+                  alt="user"
+                  width={40}
+                  height={40}
+                  className="rounded-full border-2 border-background"
+                />
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="user"
+                  width={40}
+                  height={40}
+                  className="rounded-full border-2 border-background"
+                />
+                <img
+                  src="https://randomuser.me/api/portraits/women/45.jpg"
+                  alt="user"
+                  width={40}
+                  height={40}
+                  className="rounded-full border-2 border-background"
+                />
+                <img
+                  src="https://randomuser.me/api/portraits/women/36.jpg"
+                  alt="user"
+                  width={40}
+                  height={40}
+                  className="rounded-full border-2 border-background"
+                />
+              </div>
+              <p className="text-sm text-muted-foreground">
+
+                <span className="text-primary font-semibold">10,000+</span> pros
+                utilisent déjà notre solution
+              </p>
+            </div>
+          </div>
+
+          {/* Illustration droite */}
+          {/* <div className="relative">
+            <img
+              src="https://source.unsplash.com"
+              alt="hero illustration"
+              width={600}
+              height={600}
+              className="rounded-xl shadow-lg"
+            />
+          </div> */}
+
+          <div className="relative">
+            <div className="relative aspect-square w-full h-auto rounded-3xl overflow-hidden shadow-2xl bg-white border border-gray-100    ">
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent"
+                style={{
+                  backgroundImage: `
+      url(https://media.istockphoto.com/id/2193896103/fr/photo/r%C3%A9seautage-lors-de-la-conf%C3%A9rence.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZBIE_cC1JMzPX3b3oOoCd7Ng_W5QZPK3PmL_Hpama5A=)
+    `,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
+
+              {/* <img
+              src="https://source.unsplash.com"
+              alt="hero illustration"
+              width={600}
+              height={600}
+              className=" absolute inset-4  rounded-xl shadow-lg"
+
+            /> */}
+              {/* <div className="absolute inset-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-100 shadow-sm p-6 flex flex-col">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div className="flex-1 h-4 rounded bg-gray-100"></div>
+                </div>
+
+                <div className="mt-6 grid grid-cols-3 gap-4">
+                  <div className="col-span-2 h-8 rounded-lg bg-primary-dark/5"></div>
+                  <div className="h-8 rounded-lg bg-primary-dark/10"></div>
+                  <div className="h-32 rounded-lg bg-gradient-to-br from-primary-light/20 to-primary-dark/20"></div>
+                  <div className="h-32 rounded-lg bg-gray-100"></div>
+                  <div className="h-32 rounded-lg bg-gradient-to-br from-secondary-light/20 to-secondary-dark/20"></div>
+                </div>
+
+                <div className="mt-6 flex-1 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 p-4">
+                  <div className="h-4 w-1/2 rounded bg-gray-200 mb-3"></div>
+                  <div className="h-3 w-3/4 rounded bg-gray-200/80 mb-2"></div>
+                  <div className="h-3 w-2/3 rounded bg-gray-200/80"></div>
+                </div>
+              </div> */}
+            </div>
+
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-2xl bg-primary/10 backdrop-blur-sm border border-secondary-light/20 shadow-lg"></div>
+            <div className="absolute -top-6 -right-6 w-40 h-40 rounded-2xl bg-primary-dark/10 backdrop-blur-sm border border-primary-light/20 shadow-lg"></div>
+          </div>
+        </div>
       </section>
 
       {/* Logos des entreprises */}
@@ -186,7 +315,7 @@ const testimonials = [
         ))}
       </section>
 
-      {/* Hero Image (use any image you like) */}
+      {/* Hero img (use any img you like) */}
       <section className=" mx-auto px-6 mt-10">
         <div className="rounded-2xl overflow-hidden shadow ">
           <img
@@ -221,34 +350,7 @@ const testimonials = [
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12">
           Tout ce dont vous avez besoin pour <span className="text-primary">connecter</span>
         </h2>
-        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Carte digitale",
-              desc: "Créez une carte de visite numérique professionnelle et partagez-la facilement.",
-              icon: "💳",
-            },
-            {
-              title: "Réseau",
-              desc: "Ajoutez vos contacts, collaborez et développez votre réseau en quelques clics.",
-              icon: "🤝",
-            },
-            {
-              title: "Messagerie",
-              desc: "Échangez directement avec vos connexions pour rester en contact.",
-              icon: "💬",
-            },
-          ].map((f, i) => (
-            <div
-              key={i}
-              className="bg-card p-6 rounded-2xl shadow-md hover:shadow-lg transition"
-            >
-              <div className="text-4xl">{f.icon}</div>
-              <h3 className="mt-4 text-lg font-semibold">{f.title}</h3>
-              <p className="mt-2 text-muted-foreground">{f.desc}</p>
-            </div>
-          ))}
-        </div> */}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {tools.map(({ title, desc, icon }) => (
             <div
@@ -274,7 +376,7 @@ const testimonials = [
 
       <section className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
 
-        {/* Image côté gauche */}
+        {/* img côté gauche */}
         <div className="relative flex justify-center">
           <div className="absolute -top-8 left-0 bg-green-50 rounded-full w-72 h-72 -z-10" />
           <img
@@ -355,113 +457,113 @@ const testimonials = [
       </section>
 
       <section className="bg-muted/50 py-20">
-  <div className="max-w-6xl mx-auto px-6">
-    {/* Titre */}
-    <div className="text-center mb-14">
-      <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-        Ils nous font confiance
-      </h2>
-      <p className="mt-4 text-gray-500 max-w-2xl mx-auto text-lg">
-        Découvrez comment Konect aide les professionnels à développer
-        leurs réseaux et à booster leur visibilité.
-      </p>
-    </div>
-
-    {/* Grille Témoignages */}
-    <div className="grid md:grid-cols-3 gap-8">
-      {testimonials.map((t, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: i * 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className="rounded-2xl shadow-lg border  hover:shadow-xl transition  h-full flex flex-col justify-between  border rounded-2xl p-5 shadow-sm bg-card hover:shadow-md transition">
-            <CardContent className="flex flex-col items-center text-center p-8">
-              {/* Avatar */}
-              <Avatar className="w-16 h-16 mb-5 ring-2 ring-primary/20">
-                <AvatarImage src={t.avatar} alt={t.name} />
-                <AvatarFallback>{t.name.charAt(0)}</AvatarFallback>
-              </Avatar>
-
-              {/* Texte */}
-              <p className="xl text-primary leading-relaxed italic mb-6">
-                “{t.content}”
-              </p>
-
-              {/* Identité */}
-              <div>
-                <h4 className="font-semibold text-gray-900">{t.name}</h4>
-                <div className="w-8 h-1 bg-primary/70 rounded-full mx-auto my-2"></div>
-                <p className="text-sm text-gray-500">{t.role}</p>
-              </div>
-            </CardContent>
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Titre */}
+          <div className="text-center mb-14">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+              Ils nous font confiance
+            </h2>
+            <p className="mt-4 text-gray-500 max-w-2xl mx-auto text-lg">
+              Découvrez comment Konect aide les professionnels à développer
+              leurs réseaux et à booster leur visibilité.
+            </p>
           </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
 
-<footer className="bg-muted/50 border-t border-border mt-0">
-  <div className="max-w-7xl mx-auto px-6 py-16">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-      {/* Brand Section */}
-      <div className="lg:col-span-2">
-        <h2 className="text-2xl font-bold text-gray-900">Konect</h2>
-        <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">
-          Konect vous aide à créer, partager et gérer vos cartes de visite numériques
-          pour développer vos opportunités professionnelles.
-        </p>
-        <div className="flex mt-6 space-x-4">
-          {socialLinks.map((social, index) => (
-            <a
-              key={index}
-              href={social.href}
-              className="p-2 bg-card rounded-full shadow hover:bg-primary hover:text-white transition"
-              aria-label={social.label}
-            >
-              <social.icon className="h-5 w-5" />
-            </a>
-          ))}
-        </div>
-      </div>
+          {/* Grille Témoignages */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="rounded-2xl shadow-lg border  hover:shadow-xl transition  h-full flex flex-col justify-between  border rounded-2xl p-5 shadow-sm bg-card hover:shadow-md transition">
+                  <CardContent className="flex flex-col items-center text-center p-8">
+                    {/* Avatar */}
+                    <Avatar className="w-16 h-16 mb-5 ring-2 ring-primary/20">
+                      <AvatarImage src={t.avatar} alt={t.name} />
+                      <AvatarFallback>{t.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
 
-      {/* Footer Links */}
-      {footerSections.map((section, index) => (
-        <div key={index}>
-          <h3 className="font-semibold text-muted-foreground mb-4">{section.title}</h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {section.links.map((link, linkIndex) => (
-              <li key={linkIndex}>
-                <a
-                  href={link.href}
-                  className="hover:text-foreground transition"
-                >
-                  {link.label}
-                </a>
-              </li>
+                    {/* Texte */}
+                    <p className="xl text-primary leading-relaxed italic mb-6">
+                      “{t.content}”
+                    </p>
+
+                    {/* Identité */}
+                    <div>
+                      <h4 className="font-semibold text-gray-900">{t.name}</h4>
+                      <div className="w-8 h-1 bg-primary/70 rounded-full mx-auto my-2"></div>
+                      <p className="text-sm text-gray-500">{t.role}</p>
+                    </div>
+                  </CardContent>
+                </div>
+              </motion.div>
             ))}
-          </ul>
+          </div>
         </div>
-      ))}
-    </div>
+      </section>
 
-    {/* Bottom Section */}
-    <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div className="flex items-center gap-4">
-        <p className="text-sm text-gray-500">
-          © {new Date().getFullYear()} Konect. Tous droits réservés.
-        </p>
-        <ThemeToggle />
-      </div>
-      <button className="bg-black text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition">
-        Créer ma carte
-      </button>
-    </div>
-  </div>
-</footer>
+      <footer className="bg-muted/50 border-t border-border mt-0">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+            {/* Brand Section */}
+            <div className="lg:col-span-2">
+              <h2 className="text-2xl font-bold text-gray-900">Konect</h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">
+                Konect vous aide à créer, partager et gérer vos cartes de visite numériques
+                pour développer vos opportunités professionnelles.
+              </p>
+              <div className="flex mt-6 space-x-4">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    className="p-2 bg-card rounded-full shadow hover:bg-primary hover:text-white transition"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer Links */}
+            {footerSections.map((section, index) => (
+              <div key={index}>
+                <h3 className="font-semibold text-muted-foreground mb-4">{section.title}</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <a
+                        href={link.href}
+                        className="hover:text-foreground transition"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Section */}
+          <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-4">
+              <p className="text-sm text-gray-500">
+                © {new Date().getFullYear()} Konect. Tous droits réservés.
+              </p>
+              <ThemeToggle />
+            </div>
+            <button className="bg-black text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition">
+              Créer ma carte
+            </button>
+          </div>
+        </div>
+      </footer>
 
 
 

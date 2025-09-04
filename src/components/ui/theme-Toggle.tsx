@@ -1,3 +1,4 @@
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
@@ -17,7 +18,7 @@ export default function ThemeToggle() {
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className="p-2 rounded-full bg-violet-200 dark:bg-violet-800 text-black dark:text-white text-sm"
     >
-      {theme === "light" ? "🌙 " : "☀ "}
+      {theme === "light" ? <Sun  className="text-primary"/> : <Moon className="text-white" />}
     </button>
   );
 }
